@@ -1,0 +1,5 @@
+#Resume dari Git 
+
+1. Git merupakan salah satu dari version control sistem yang banyak digunakan oleh para programmer untuk mengembangkan suatu software secara bersama-sama atau tim, cara kerja dari git sendiri adalah git menyediakan komputer server untuk suatu software yang nantinya dapat diakses oleh tim programmer. Disini git juga menyimpan berbagai perubahan yang dibuat oleh user. Untuk mengupload suatu file biasanya kita menyebutnya dengan commit yang dimana jika kita mengcommit suatu file, github akan mencatat segala perubahan pada file tersebut.
+2. Jika kita sudah melakukan instalasi git, selanjutnya kita perlu mengkonfigurasikan github dengan komputer kita dengan menggunakan git config, lalu selanjutnya kita perlu menghubungkan langsung github dengan komputer kita bisa dengan git init dan juga dengan git clone ssh atau https yang tersedia di repository masing-masing.
+3. Selanjutnya ada workflow di dalam github yang dapat digunakan oleh masing-masing tim, biasanya akan ada beberapa branch yang akan digunakan agar branch master dapat berlangsung dengan aman atau tanpa bugs. Fitur-fitur baru nantinya akan di update pada branch yang baru pula.
