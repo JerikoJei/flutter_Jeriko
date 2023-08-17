@@ -8,7 +8,7 @@
 
         {
             "name": "Dart & Flutter",
-            "program": "bin/main.dart",
+            "flutterMode": "debug",
             "request": "launch",
             "type": "dart",
             "console": "terminal"
