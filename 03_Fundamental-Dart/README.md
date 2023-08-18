@@ -1,0 +1,5 @@
+#Resume dari Dart
+
+1. dart merupakan bahasa pemrograman yang digunakan pada flutter, dan dirancang untuk dapat berjalan dengan cepat dan multi platform, banyak kelebihan-kelebihan dart yaitu konsistensi dalam data, aman dari nilai null, banyak standard library, dan tentu multi platform,.
+2. untuk bisa menjalankan program dart dapat dimulai dari 'void main()' dan juga jika ingin menampilkan teks atau tulisan, maka perintah yang dapat dijalankan yaitu perintah 'print()', lalu selanjutnya ada dari variable yang digunakan untuk menyimpan data, dan memiliki nama unik masing-masing dan memiliki tipe tipe data seperti string, interger, char, double, bool dan lain-lain.
+3. Didalam dart tentu saja ada operator yang digunakan untuk pengolahan data seperti penjumlahan, pengurangan, perkalian, pembagian dan lain-lainnya. ada beberapa contoh yaitu aritmatik, assignment, comparison, dan logical.
