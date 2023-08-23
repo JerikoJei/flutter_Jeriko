@@ -1,25 +1,21 @@
 import 'dart:io';
 
-bool pri(int n) {
+void pri(int n) {
   if (n <= 1) {
-    return false;
+    return print('Bukan Bilangan Prima');
   }
 
   for (int i = 2; i <= n / 2; i++) {
     if (n % i == 0) {
-      return false;
+      return print('Bukan Bilangan Prima');
     }
   }
-  return true;
+  return print('Bilangan prima');
 }
 
 void main() {
   stdout.write("Masukkan sebuah bilangan : ");
   int fa = int.parse(stdin.readLineSync()!);
 
-  if (pri(fa)) {
-    print('bilangan prima');
-  } else {
-    print('bukan bilangan prima');
-  }
+  pri(fa);
 }
