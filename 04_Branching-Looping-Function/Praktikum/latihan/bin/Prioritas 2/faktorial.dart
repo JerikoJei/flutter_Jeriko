@@ -1,9 +1,9 @@
 import 'dart:io';
 
-int faktorial(int n) {
-  int faktor = 1;
+BigInt faktorial(int n) {
+  BigInt faktor = BigInt.one;
   for (int i = 1; i <= n; i++) {
-    faktor *= i;
+    faktor *= BigInt.from(i);
   }
   return faktor;
 }
@@ -12,6 +12,6 @@ void main() {
   stdout.write('Masukkan nilai yang ingin difaktorialkan : ');
   int nilai = int.parse(stdin.readLineSync()!);
 
-  int hasil = faktorial(nilai);
+  BigInt hasil = faktorial(nilai);
   print(hasil);
 }
