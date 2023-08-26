@@ -1,0 +1,5 @@
+#Advance Function
+
+1. Anonymous function adalah fungsi yang tidak mempunyai nama dan sebagai data, ketika fungsi ini dipanggil maka akan menjalankan apa yang ada didalamnya, dan juga ada 1 function lagi yaitu arrow function, dimana fungsi ini secara opsional dapat memiliki nama atau tidak, dan hanya berisi 1 data saja.
+2. Async await adalah sebuah metode yang dapat mendelay sebuah program, dimana bisa menjalankan proses yang lainnya terlebih dahulu. metode ini ditulis pada sebuah function, await akan membuat sebuah program menunggu hingga prosesnya selesai dijalankan, lalu ada future yang merupakan data return dari async, dan dapat membuat data yang kita inginkan ditunggu.
+3. collection terbagi 2 yaitu list dan map, list merupakan suatu data yang dikumpulkan secara berbaris dan memiliki indexnya masing-masing untuk dipanggil yang dimulai dari angka 0, lalu map merupakan suatu penyimpanan data yang mempunyai key value yang berfungsi seperti index.
