@@ -13,7 +13,7 @@ void main() {
 
     data.add(dataa);
   }
-  Map jumlahdata = {};
+  final Map jumlahdata = {};
 
   for (var da in data) {
     if (jumlahdata.containsKey(da)) {
@@ -26,7 +26,7 @@ void main() {
   print("List: $data");
   print("Jumlah kemunculan setiap data:");
   for (var entry in jumlahdata.entries) {
-    var kata = entry.key;
+    String kata = entry.key;
     var count = entry.value;
     print("$kata: $count kali");
   }
