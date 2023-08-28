@@ -26,8 +26,8 @@ void main() {
   print("List: $data");
   print("Jumlah kemunculan setiap data:");
   for (var entry in jumlahdata.entries) {
-    var number = entry.key;
+    var kata = entry.key;
     var count = entry.value;
-    print("$number: $count kali");
+    print("$kata: $count kali");
   }
 }
