@@ -25,7 +25,9 @@ void main() {
 
   print("List: $data");
   print("Jumlah kemunculan setiap data:");
-  jumlahdata.forEach((number, count) {
+  for (var entry in jumlahdata.entries) {
+    var number = entry.key;
+    var count = entry.value;
     print("$number: $count kali");
-  });
+  }
 }
