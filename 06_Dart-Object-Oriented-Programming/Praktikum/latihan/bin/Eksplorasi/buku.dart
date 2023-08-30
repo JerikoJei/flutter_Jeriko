@@ -1,19 +1,28 @@
 class Buku {
-  String id;
+  int id;
   String judul;
   String penerbit;
-  String harga;
+  double harga;
   String kategori;
 
   Buku(this.id, this.judul, this.penerbit, this.harga, this.kategori);
+}
 
+class Toko {
   List<Buku> daftarBuku = [];
   void tambah(Buku buku) {
     daftarBuku.add(buku);
   }
 
-  void hapus(Buku buku) {
-    daftarBuku.remove(buku);
+  void hapusBuku(int id) {
+    var buku = daftarBuku.firstWhere((b) => b.id == id,
+        orElse: () => Buku(-1, '', '', 0, ''));
+    if (buku.id != -1) {
+      daftarBuku.remove(buku);
+      print('Buku berhasil dihapus.');
+    } else {
+      print('Buku dengan ID $id tidak ditemukan.');
+    }
   }
 
   void lihat() {
