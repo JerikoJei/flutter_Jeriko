@@ -3,21 +3,21 @@ class BangunRuang {
   late double lebar;
   late double tinggi;
 
-  void volume() {}
+  volume() {}
 }
 
 class Kubus extends BangunRuang {
   late double sisi;
 
   @override
-  double volume() {
+  volume() {
     return sisi * sisi * sisi;
   }
 }
 
 class Balok extends BangunRuang {
   @override
-  double volume() {
+  volume() {
     return panjang * lebar * tinggi;
   }
 }
