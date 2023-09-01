@@ -1,0 +1,5 @@
+# Introduction Flutter Widget
+
+1. Flutter bukan merupakan bahasa pemrograman melainkan framework yang digunakan untuk membuat aplikasi mobile, web, desktop. keunggulan yang mungkin dapat terlihat dari flutter adalah mudah digunakan dan dipelajari, produktitivitas yang tinggi, dokumentasi yang lengkap, dan komunitasnya yang mungkin cukup berkembang.
+2. Widget digunakan untuk membentuk UI atau antarmuka didalam aplikasi, Widget didalam flutter berupa class yang terdiri dari beberapa widget lainnya, ada 2 jenis widget yaitu stateless dan statefull. Stateless mempunyai ciri-ciri yaitu tidak bergantung pada perubahan data, hanya fokus pada tampilannya saja, dan dibuat dengan extends pada class stateless widget, lalu ada stateful widget yang mempunyai ciri-ciri yaitu mementingkan perubahan pada data, dibuat dengan extends pada class stateful widget, dan 1 widget mempunyai 2 class yaitu widget dan state.
+3. Build in widget merupakan widget yang dapat langsung digunakan karena sudah terinstal bersama flutter, terdiri dari contohnya MaterialApp, Scaffold, AppBar, dan Text.
