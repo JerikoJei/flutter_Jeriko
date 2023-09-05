@@ -1,0 +1,5 @@
+#installation command line interface and package management in flutter
+
+1. Flutter Command line interface (CLI) merupakan alat yang digunakan untuk berinteraksi dengan flutter SDK dan dijalankan didalam terminal, ada banyak CLI di dalam flutter, contohnya yaitu Flutter Doctor, Flutter Create, Flutter Run, Flutter Emulator, Flutter Channel, Flutter Pub, Flutter Build, dan Flutter Clean.
+2. Perintah yang nantinya akan paling sering digunakan adalah Flutter Pub dan Flutter Clean, Flutter Pub digunakan untuk menambahkan package kedalam dependencies yang ada di File Pubspec.yaml, lalu Flutter Clean digunakan untuk menghapus folder build dan lainnya yang kurang penting.
+3. Untuk mencari package, kita dapat mencarinya pada website pub.dev, untuk menambahkannya kedalam file kita, kita hanya perlu pergi kebagian installation, lalu copy paste baris dependencies yang ada diwebsite kedalam Pubspec.yaml, setelah itu kita bisa menekan ctrl+s atau bisa dengan flutter pub get, lalu tinggal digunakan ke dalam file yang diinginkan dengan cara diimport.
