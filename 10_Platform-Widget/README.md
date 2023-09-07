@@ -1,0 +1,5 @@
+#Platform Widget
+
+1. Pada android, flutter menggunakan widget yang disebut MaterialApp, untuk mengimport materialApp, kita dapat menuliskan package:flutter/material.dart, untuk IOS flutter menggunakan CupertinoApp dimana untuk mengimport cupertinoApp kita bisa menuliskan package:flutter/cupertino.dart
+2. Struktur pada flutter dapat diatur menggunakan routes dan initial routes, dimana kita dapat mendaftarkan suatu halaman menjadi routes dan memanggilnya pada intialroute.
+3. Scaffold merupakan widget dasar untuk membangun halaman pada MaterialApp dimana biasanya terdiri dari appbar, body, drawer dan navbar, kita juga dapat menambahkan hal-hal lainnya seperti floatingactionbutton dan widget lainnya, untuk IOS menggunakan CupertinoPageScaffold untuk membangun halaman, biasanya terdiri dari navigationBar dan child.
