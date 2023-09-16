@@ -1,5 +1,10 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class MyHomeScreen extends StatefulWidget {
   const MyHomeScreen({super.key});
@@ -9,6 +14,20 @@ class MyHomeScreen extends StatefulWidget {
 }
 
 class _MyHomeScreenState extends State<MyHomeScreen> {
+  DateTime _duedate = DateTime.now();
+  final currentdate = DateTime.now();
+  Color _curcolor = Colors.green;
+
+  File file = File("");
+  void _pickFiles() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      setState(() {
+        file = File(result.files.single.name);
+      });
+    }
+  }
+
   final _formKey = GlobalKey<FormState>();
   var inputController = TextEditingController();
   var inputController2 = TextEditingController();
@@ -23,7 +42,13 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
 
     if (name.isNotEmpty && phonenumber.isNotEmpty) {
       setState(() {
-        contacts.add({'ctc': name, 'num': phonenumber});
+        contacts.add({
+          'ctc': name,
+          'num': phonenumber,
+          'date': _duedate,
+          'color': _curcolor,
+          'file': file,
+        });
         inputController.clear();
         inputController2.clear();
       });
@@ -34,7 +59,11 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
     for (var contact in contacts) {
       final name = contact['ctc'];
       final phoneNumber = contact['num'];
-      debugPrint('Contact: {title: $name, subtitle: $phoneNumber}');
+      final color = contact['color'];
+      final date = contact['date'];
+      final file = contact['file'];
+      debugPrint(
+          'Contact: {title: $name, subtitle: $phoneNumber,  date: $date, Color: $color, file: $file}');
     }
   }
 
@@ -179,6 +208,132 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                   const SizedBox(
                     height: 20,
                   ),
+                  const Divider(
+                    thickness: 2,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Date',
+                        style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w700, fontSize: 17),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          final selectdate = await showDatePicker(
+                            context: context,
+                            initialDate: currentdate,
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime.now(),
+                          );
+                          setState(() {
+                            if (selectdate != null) {
+                              _duedate = selectdate;
+                            }
+                          });
+                        },
+                        child: const Text('Select Date'),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Tanggal Lahir : '),
+                      Text(DateFormat('dd MMMM yyyy').format(_duedate))
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Divider(
+                    thickness: 2,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Choose Color',
+                        style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 40,
+                    width: double.infinity,
+                    color: _curcolor,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return SingleChildScrollView(
+                                child: AlertDialog(
+                                  title: const Text('Pick Color'),
+                                  content: ColorPicker(
+                                    pickerColor: _curcolor,
+                                    onColorChanged: (color) {
+                                      setState(() {
+                                        _curcolor = color;
+                                      });
+                                    },
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Save Color'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(_curcolor),
+                    ),
+                    child: const Text('Pick Color'),
+                  ),
+                  const Divider(
+                    thickness: 2,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Pick Your Files',
+                        style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(_curcolor),
+                    ),
+                    onPressed: () {
+                      _pickFiles();
+                    },
+                    child: const Text('Pick and Open Files'),
+                  ),
+                  const Divider(
+                    thickness: 2,
+                  ),
                   Column(
                     children: [
                       Row(
@@ -204,8 +359,11 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                             child: const Text('Submit'),
                           ),
                         ],
-                      )
+                      ),
                     ],
+                  ),
+                  const Divider(
+                    thickness: 3,
                   ),
                   Column(children: [
                     Text(
@@ -217,8 +375,6 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                           fontSize: 24),
                     ),
                   ]),
-
-                  ///List Ctc
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: contacts.length,
@@ -226,6 +382,9 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                       final contact = contacts[index];
                       final name = contact['ctc'];
                       final phonenum = contact['num'];
+                      final born = contact['date'];
+                      final color = contact['color'];
+                      final file = contact['file'];
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 3),
                         child: ListTile(
@@ -234,7 +393,32 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                             child: Text('A'),
                           ),
                           title: Text(name),
-                          subtitle: Text(phonenum),
+                          dense: true,
+                          subtitle: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(phonenum),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('Date = $born'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text('color = '),
+                                  Container(height: 10, width: 10, color: color)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('File = $file'),
+                                ],
+                              ),
+                            ],
+                          ),
                           trailing: SizedBox(
                             width: 70,
                             child: Row(children: [
@@ -270,11 +454,118 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                                                       });
                                                     },
                                                   ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(DateFormat(
+                                                              'dd MMMM yyyy')
+                                                          .format(_duedate)),
+                                                      TextButton(
+                                                        onPressed: () async {
+                                                          final selectdate =
+                                                              await showDatePicker(
+                                                            context: context,
+                                                            initialDate:
+                                                                currentdate,
+                                                            firstDate:
+                                                                DateTime(1950),
+                                                            lastDate:
+                                                                DateTime.now(),
+                                                          );
+                                                          setState(() {
+                                                            if (selectdate !=
+                                                                null) {
+                                                              _duedate =
+                                                                  selectdate;
+                                                            }
+                                                          });
+                                                        },
+                                                        child: const Text(
+                                                            'Select Date'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      ElevatedButton(
+                                                        onPressed: () {
+                                                          setState(
+                                                            () {
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return SingleChildScrollView(
+                                                                    child:
+                                                                        AlertDialog(
+                                                                      title: const Text(
+                                                                          'Pick Color'),
+                                                                      content:
+                                                                          ColorPicker(
+                                                                        pickerColor:
+                                                                            _curcolor,
+                                                                        onColorChanged:
+                                                                            (color) {
+                                                                          setState(
+                                                                              () {
+                                                                            _curcolor =
+                                                                                color;
+                                                                          });
+                                                                        },
+                                                                      ),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              const Text('Save Color'),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                        style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStatePropertyAll(
+                                                                  color),
+                                                        ),
+                                                        child: const Text(
+                                                            'Pick Color'),
+                                                      ),
+                                                      const Spacer(),
+                                                      ElevatedButton(
+                                                        style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStatePropertyAll(
+                                                                  _curcolor),
+                                                        ),
+                                                        onPressed: () {
+                                                          _pickFiles();
+                                                        },
+                                                        child: const Text(
+                                                            'Pick and Open Files'),
+                                                      ),
+                                                    ],
+                                                  ),
                                                   TextButton(
                                                     onPressed: () {
                                                       setState(() {
                                                         contact['ctc'] = text;
                                                         contact['num'] = text2;
+                                                        contact['date'] =
+                                                            _duedate;
+                                                        contact['color'] =
+                                                            _curcolor;
+                                                        contact['file'] = file;
                                                       });
                                                       Navigator.pop(context);
                                                     },
