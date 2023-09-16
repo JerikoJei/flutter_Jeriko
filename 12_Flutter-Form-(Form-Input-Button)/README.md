@@ -1,0 +1,5 @@
+# Flutter Form(Form Input Button)
+
+1. pada flutter form, form merupakan widget yang dapat menerima inputan dari pengguna yang isinya bisa lebih dari 1 inputan. ada berbagai jenis inputan mulai dari textfield, radio, checkbox dan dropdown button.
+2. Textfield merupakan widget yang dapat menerima inputan pengguna berupa kata/angka yang diinput oleh pengguna, Radio merupakan inputan yang memberikan opsi pada pengguna, untuk radio hanya menerima 1 opsi saja, checkbox merupakan inputan yang memberikan opsi juga kepada pengguna tetapi dapat menerima lebih dari 1 opsi, dropdown button juga inputan yang memberikan opsi tetapi hanya akan muncul jika ditekan, inputan yang diterima juga hanya 1 opsi.
+3. Button adalah tombol yang dapat melakukan suatu hal pada saat user menekannya, contoh button yaitu elevated button, icon button, textbutton dan lain-lainnya, dalam button wajib mempunyai onpressed.
