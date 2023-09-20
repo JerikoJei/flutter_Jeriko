@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:praktikum/gallery.dart';
 
 class MyHomeScreen extends StatefulWidget {
   const MyHomeScreen({super.key});
@@ -603,11 +602,8 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyGallery(),
-                  ),
+                Navigator.of(context).pushNamed(
+                  '/',
                 );
               },
               child: const ListTile(
@@ -616,12 +612,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomeScreen(),
-                  ),
-                );
+                Navigator.of(context).pushNamed('contact');
               },
               child: const ListTile(
                 title: Text('Contact'),

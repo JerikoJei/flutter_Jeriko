@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyImage extends StatefulWidget {
-  final String value;
-  const MyImage({super.key, required this.value});
+  const MyImage({super.key});
 
   @override
   State<MyImage> createState() => _MyImageState();
@@ -11,6 +10,7 @@ class MyImage extends StatefulWidget {
 class _MyImageState extends State<MyImage> {
   @override
   Widget build(BuildContext context) {
+    final parameter = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -19,7 +19,7 @@ class _MyImageState extends State<MyImage> {
       ),
       body: Column(
         children: [
-          Image.network(widget.value),
+          Image.network(parameter),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:praktikum/home_screen.dart';
-import 'package:praktikum/image.dart';
 
 class MyGallery extends StatefulWidget {
   const MyGallery({super.key});
@@ -56,13 +54,8 @@ class _MyGalleryState extends State<MyGallery> {
                           children: [
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => MyImage(
-                                      value: photos[index],
-                                    ),
-                                  ),
-                                );
+                                Navigator.of(context).pushNamed('image',
+                                    arguments: photos[index]);
                               },
                               child: const Text('Ya'),
                             ),
@@ -96,11 +89,8 @@ class _MyGalleryState extends State<MyGallery> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyGallery(),
-                  ),
+                Navigator.of(context).pushNamed(
+                  '/',
                 );
               },
               child: const ListTile(
@@ -109,12 +99,7 @@ class _MyGalleryState extends State<MyGallery> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomeScreen(),
-                  ),
-                );
+                Navigator.of(context).pushNamed('contact');
               },
               child: const ListTile(
                 title: Text('Contact'),
