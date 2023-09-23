@@ -1,0 +1,5 @@
+# Assets
+
+1. Assets merupakan file yang di bundled/dipaketkan dan di deployed/di pasang bersamaan dengan pemasangan sebuah aplikasi, ada beberapa tipe assets yaitu static Data, icons, images, dan font, atau hal-hal lainnya, untuk bisa memasang assets di flutter kita harus menggunakan pubspec.yaml yang terdapat pada root project kita.
+2. Image adalah file berupa gambar yang bisa membuat tampilan aplikasi kita menjadi semakin menarik dimata pengguna (eye catching), pada flutter format gambar yang didukung adalah JPEG, WebP, GIF, Animated Web/GIF, PNG, BMP, dan WBMP. kita juga bisa mengambil gambar di internet dengan menggunakan link.\
+3. Font adalah style tertentu yang bisa kita pakai pada aplikasi kita dan hal tersebut juga bisa menjadi keunikan pada aplikasi kita, font yang bisa kita pakai bisa diambil dari bawaan flutter atau dari package.
