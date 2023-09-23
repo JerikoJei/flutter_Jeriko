@@ -1,0 +1,5 @@
+# Flutter Navigation
+
+1. Navigation adalah widget yang berfungsi untuk memindahkan 1 halaman ke halaman lainnya. contoh dari widget navigation adalah Navigator.push(), Navigator.pop(), lalu adalah Navigator.of dan lain-lainnya tergantung fungsi yang diingikan oleh designer.
+2. perpindahan dalam halaman dilakukan melalui Navigator.push dan untuk kembali lagi ke halaman sebelumnya dapat menggunakan Navigator.pop, kita juga dapat memindahkan data pada halaman baru dengan menggunakan parameter.
+3. Tiap halaman kita memiliki alamatnya masing-masing yang disebut dengan route, untuk memindahkan halaman juga dapat menggunakan route dengan mengguankan Navigator.pushNamed, untuk mempraktikkannya kita perlu menambahkan initial dari route kita di materialApp. untuk memindahkan data dapat menggunakan arguments.
