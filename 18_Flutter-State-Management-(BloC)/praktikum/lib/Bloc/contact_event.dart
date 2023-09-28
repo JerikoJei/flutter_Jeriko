@@ -7,4 +7,4 @@ abstract class ContactEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class 
+class AddContact extends ContactEvent {}

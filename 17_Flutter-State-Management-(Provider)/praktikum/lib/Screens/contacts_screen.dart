@@ -224,10 +224,8 @@ class _ContactScreenState extends State<ContactScreen> {
                                           ),
                                           TextButton(
                                               onPressed: () {
-                                                contactProvider.contacts[index]
-                                                    .name = name;
-                                                contactProvider.contacts[index]
-                                                    .nomor = nomor;
+                                                contactProvider.updateContact(
+                                                    index, name, nomor);
                                                 Navigator.pop(context);
                                               },
                                               child: const Text('Submit'))
@@ -238,7 +236,7 @@ class _ContactScreenState extends State<ContactScreen> {
                               )),
                               IconButton(
                                   onPressed: () {
-                                    contactProvider.contacts.removeAt(index);
+                                    contactProvider.deleteContact(index);
                                   },
                                   icon: const Icon(Icons.delete))
                             ]))));

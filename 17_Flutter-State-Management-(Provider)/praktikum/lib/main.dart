@@ -3,7 +3,7 @@ import 'package:praktikum/Screens/contacts_screen.dart';
 import 'package:praktikum/Screens/gallery_screen.dart';
 import 'package:praktikum/Screens/image_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:praktikum/Provider/contact_provider.dart' as contact_store;
+import 'package:praktikum/Provider/contact_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         'phone': (context) => ChangeNotifierProvider(
-              create: (BuildContext context) => contact_store.ContactProvider(),
+              create: (BuildContext context) => ContactProvider(),
               child: const ContactScreen(),
             ),
         'gallery': (context) => const MyGallery(),

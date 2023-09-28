@@ -9,4 +9,15 @@ class ContactProvider with ChangeNotifier {
     _contact.add(contact);
     notifyListeners();
   }
+
+  void updateContact(int index, name, nomor) {
+    _contact[index].name = name;
+    _contact[index].nomor = nomor;
+    notifyListeners();
+  }
+
+  void deleteContact(int index) {
+    _contact.removeAt(index);
+    notifyListeners();
+  }
 }
