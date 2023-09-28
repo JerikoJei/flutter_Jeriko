@@ -90,7 +90,7 @@ class _MyGalleryState extends State<MyGallery> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushNamed(
-                  '/',
+                  'gallery',
                 );
               },
               child: const ListTile(
@@ -99,7 +99,7 @@ class _MyGalleryState extends State<MyGallery> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('contact');
+                Navigator.of(context).pushNamed('phone');
               },
               child: const ListTile(
                 title: Text('Contact'),

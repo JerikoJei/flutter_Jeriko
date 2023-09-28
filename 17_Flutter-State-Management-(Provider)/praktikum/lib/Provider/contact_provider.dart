@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum/Provider/model.dart';
 
-class Contact with ChangeNotifier {
-  List<Map<String, String>> _contact = [];
-  List<Map<String, String>> get contacts => _contact;
+class ContactProvider with ChangeNotifier {
+  final List<GetContact> _contact = [];
+  List<GetContact> get contacts => _contact;
 
-  void addContact(Map<String, String> contact) {
+  void addContact(GetContact contact) {
     _contact.add(contact);
     notifyListeners();
   }
