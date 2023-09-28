@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:praktikum/Provider/contact_provider.dart';
-import 'package:praktikum/Provider/model.dart';
-import 'package:provider/provider.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -29,8 +26,6 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final contactProvider =
-        Provider.of<ContactProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.white,
       //appbar dengan judul contacts
@@ -172,9 +167,6 @@ class _ContactScreenState extends State<ContactScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formkey.currentState!.validate()) {
-                        contactProvider.addContact(
-                          GetContact(name: name, nomor: nomor),
-                        );
                         namecontroller.clear();
                         nomorcontroller.clear();
                       }
@@ -184,66 +176,57 @@ class _ContactScreenState extends State<ContactScreen> {
                     child: const Text('Submit'),
                   ))
             ])),
-        Consumer<ContactProvider>(builder: (context, contactProvider, _) {
-          return ListView.builder(
-              shrinkWrap: true,
-              itemCount: contactProvider.contacts.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                    padding: const EdgeInsets.only(bottom: 3),
-                    child: ListTile(
-                        title: Text(contactProvider.contacts[index].name),
-                        subtitle: Text(contactProvider.contacts[index].nomor),
-                        leading: const CircleAvatar(
-                          child: Text('A'),
-                        ),
-                        trailing: SizedBox(
-                            width: 70,
-                            child: Row(children: [
-                              Expanded(
-                                  child: IconButton(
-                                onPressed: () => showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: const Text('Update Contact'),
-                                        actions: [
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                                hintText: 'Masukkan Nama'),
-                                            onChanged: (String value) {
-                                              name = value;
+        ListView.builder(
+            shrinkWrap: true,
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              return Padding(
+                  padding: const EdgeInsets.only(bottom: 3),
+                  child: ListTile(
+                      title: Text(''),
+                      subtitle: Text(''),
+                      leading: const CircleAvatar(
+                        child: Text('A'),
+                      ),
+                      trailing: SizedBox(
+                          width: 70,
+                          child: Row(children: [
+                            Expanded(
+                                child: IconButton(
+                              onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text('Update Contact'),
+                                      actions: [
+                                        TextFormField(
+                                          decoration: const InputDecoration(
+                                              hintText: 'Masukkan Nama'),
+                                          onChanged: (String value) {
+                                            name = value;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          decoration: const InputDecoration(
+                                              hintText: 'Masukkan Nomor'),
+                                          onChanged: (String value) {
+                                            nomor = value;
+                                          },
+                                        ),
+                                        TextButton(
+                                            onPressed: () {
+                                              namecontroller.clear();
+                                              nomorcontroller.clear();
+                                              Navigator.pop(context);
                                             },
-                                          ),
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                                hintText: 'Masukkan Nomor'),
-                                            onChanged: (String value) {
-                                              nomor = value;
-                                            },
-                                          ),
-                                          TextButton(
-                                              onPressed: () {
-                                                contactProvider.contacts[index]
-                                                    .name = name;
-                                                contactProvider.contacts[index]
-                                                    .nomor = nomor;
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Submit'))
-                                        ],
-                                      );
-                                    }),
-                                icon: const Icon(Icons.edit),
-                              )),
-                              IconButton(
-                                  onPressed: () {
-                                    contactProvider.contacts.removeAt(index);
-                                  },
-                                  icon: const Icon(Icons.delete))
-                            ]))));
-              });
-        }),
+                                            child: const Text('Submit'))
+                                      ],
+                                    );
+                                  }),
+                              icon: const Icon(Icons.edit),
+                            )),
+                          ]))));
+            }),
       ])),
       drawer: Drawer(
         child: ListView(
