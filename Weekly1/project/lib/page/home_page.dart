@@ -15,6 +15,15 @@ class _MyHomePageState extends State<MyHomePage> {
   var lastname = TextEditingController();
   var email = TextEditingController();
   var problem = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+
+  void scrollDown() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: const Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ListView(
+          controller: _scrollController,
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(20),
           children: [
@@ -63,9 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 20,
             ),
-            const Icon(
-              Icons.arrow_downward,
-              size: 30,
+            IconButton(
+              onPressed: () {
+                scrollDown();
+              },
+              icon: const Icon(
+                Icons.arrow_downward,
+                size: 30,
+              ),
             ),
             const SizedBox(
               height: 300,

@@ -8,7 +8,6 @@ class ContactUsPage extends StatefulWidget {
 }
 
 class _ContactUsPageState extends State<ContactUsPage> {
-  
   @override
   Widget build(BuildContext context) {
     return const Column(
