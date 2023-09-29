@@ -183,59 +183,55 @@ class _MyHomePageState extends State<MyHomePage> {
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         onPressed: () {
-                          setState(
-                            () {
-                              if (_formKey.currentState!.validate()) {
-                                final fname = firstname.text;
-                                final lname = lastname.text;
-                                final emaill = email.text;
-                                final prob = problem.text;
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    title: const Text(
-                                      'Submit Form',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    content: SingleChildScrollView(
-                                      child: ListBody(
-                                        children: [
-                                          const Text(
-                                            'Nama Lengkap',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text('$fname $lname'),
-                                          const Text(
-                                            'Alamat Email Anda',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(emaill),
-                                          const Text(
-                                            'Keluhan anda',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(prob),
-                                        ],
+                          if (_formKey.currentState!.validate()) {
+                            final fname = firstname.text;
+                            final lname = lastname.text;
+                            final emaill = email.text;
+                            final prob = problem.text;
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: const Text(
+                                  'Submit Form',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                content: SingleChildScrollView(
+                                  child: ListBody(
+                                    children: [
+                                      const Text(
+                                        'Nama Lengkap',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        child: const Text('Submit'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
+                                      Text('$fname $lname'),
+                                      const Text(
+                                        'Alamat Email Anda',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
+                                      Text(emaill),
+                                      const Text(
+                                        'Keluhan anda',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(prob),
                                     ],
                                   ),
-                                );
-                              }
-                            },
-                          );
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('Submit'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
