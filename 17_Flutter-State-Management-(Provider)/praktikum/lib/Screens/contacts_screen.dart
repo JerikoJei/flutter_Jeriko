@@ -18,6 +18,7 @@ class _ContactScreenState extends State<ContactScreen> {
   var namecontroller = TextEditingController();
   var nomorcontroller = TextEditingController();
   var formkey = GlobalKey<FormState>();
+  var formkey2 = GlobalKey<FormState>();
 
   //dispose untuk controler
   @override
@@ -205,31 +206,89 @@ class _ContactScreenState extends State<ContactScreen> {
                                 onPressed: () => showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return AlertDialog(
-                                        title: const Text('Update Contact'),
-                                        actions: [
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                                hintText: 'Masukkan Nama'),
-                                            onChanged: (String value) {
-                                              name = value;
-                                            },
-                                          ),
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                                hintText: 'Masukkan Nomor'),
-                                            onChanged: (String value) {
-                                              nomor = value;
-                                            },
-                                          ),
-                                          TextButton(
-                                              onPressed: () {
-                                                contactProvider.updateContact(
-                                                    index, name, nomor);
-                                                Navigator.pop(context);
+                                      return Form(
+                                        key: formkey2,
+                                        child: AlertDialog(
+                                          title: const Text('Update Contact'),
+                                          actions: [
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                  hintText: 'Masukkan Nama'),
+                                              onChanged: (String value) {
+                                                name = value;
                                               },
-                                              child: const Text('Submit'))
-                                        ],
+                                              validator: (value) {
+                                                //validasi nama kontak tidak kosong
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Mohon Masukkan Nama Kontak';
+                                                }
+                                                //validasi nama harus 2 kata
+                                                if (value.split(' ').length <
+                                                    2) {
+                                                  return 'Nama minimal di isi 2 kata';
+                                                }
+                                                // validasi nama harus dimulai dengan huruf kapital
+                                                final words = value.split(' ');
+                                                for (final word in words) {
+                                                  if (!RegExp(r'^[A-Z][a-z]*$')
+                                                      .hasMatch(word)) {
+                                                    return 'Setiap kata harus dimulai dengan huruf kapital.';
+                                                  }
+                                                }
+                                                // validasi nama tidak boleh ada angka
+                                                if (RegExp(
+                                                        r'[0-9!@#%^&*(),.?":{}|<>]')
+                                                    .hasMatch(value)) {
+                                                  return 'Nama tidak boleh mengandung angka atau karakter khusus.';
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                  hintText: 'Masukkan Nomor'),
+                                              onChanged: (String value) {
+                                                nomor = value;
+                                              },
+                                              // validasi untuk nomor
+                                              validator: (value) {
+                                                // validasi nomor tidak kosong
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Mohon Masukkan Nomor Telepon';
+                                                }
+                                                //validasi nomor harus hanya angka
+                                                if (!RegExp(r'^[0-9]*$')
+                                                    .hasMatch(value)) {
+                                                  return 'Nomor telepon harus terdiri dari angka saja.';
+                                                }
+                                                // Validasi panjang nomor telepon
+                                                if (value.length < 8 ||
+                                                    value.length > 15) {
+                                                  return 'Panjang nomor telepon harus minimal 8 digit dan maksimal 15 digit.';
+                                                }
+                                                // Validasi nomor telepon harus dimulai dengan angka 0
+                                                if (!RegExp(r'^0')
+                                                    .hasMatch(value)) {
+                                                  return 'Nomor telepon harus dimulai dengan angka 0.';
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  if (formkey2.currentState!
+                                                      .validate()) {
+                                                    contactProvider
+                                                        .updateContact(
+                                                            index, name, nomor);
+                                                    Navigator.pop(context);
+                                                  }
+                                                },
+                                                child: const Text('Submit'))
+                                          ],
+                                        ),
                                       );
                                     }),
                                 icon: const Icon(Icons.edit),
