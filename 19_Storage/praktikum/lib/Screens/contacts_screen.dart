@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:praktikum/Provider/contact_provider.dart';
 import 'package:praktikum/Provider/model.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -13,8 +12,6 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
-  late SharedPreferences logindata;
-  String username = '';
   String name = '';
   String nomor = '';
   //textediting untuk nama dan nomor
@@ -33,15 +30,10 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   void initState() {
-    initial();
+    final contactprovider =
+        Provider.of<ContactProvider>(context, listen: false);
+    contactprovider.initial();
     super.initState();
-  }
-
-  void initial() async {
-    logindata = await SharedPreferences.getInstance();
-    setState(() {
-      username = logindata.getString('username').toString();
-    });
   }
 
   @override
@@ -56,8 +48,8 @@ class _ContactScreenState extends State<ContactScreen> {
         actions: [
           TextButton(
               onPressed: () {
-                logindata.setBool('login', true);
-                logindata.remove('username');
+                contactProvider.logindata.setBool('login', true);
+                contactProvider.logindata.remove('username');
                 Navigator.pushNamedAndRemoveUntil(
                     context, 'login', (route) => false);
               },
@@ -67,7 +59,7 @@ class _ContactScreenState extends State<ContactScreen> {
       //body dibungkus dengan listview
       body: SafeArea(
           child: ListView(padding: const EdgeInsets.all(20), children: [
-        Text('Hi, $username'),
+        Text('Hi, ${contactProvider.username.toString()}'),
         const Icon(
           Icons.phone_android,
         ),
