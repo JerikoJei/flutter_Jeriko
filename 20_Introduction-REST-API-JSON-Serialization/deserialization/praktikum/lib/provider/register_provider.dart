@@ -23,7 +23,6 @@ class RegisterProvider extends ChangeNotifier {
       if (e is DioException) {
         e.response!.statusMessage;
       }
-      print(e);
 
       myState = MyState.failed;
       notifyListeners();

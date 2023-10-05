@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:praktikum/models/state.dart';
 import 'package:praktikum/provider/register_provider.dart';
 import 'package:provider/provider.dart';
+import 'dart:convert';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -38,6 +39,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var dataJSON = '{"id": 2, "name": "John Thor", "phone": "0857676565688"}';
+    var dataMap = jsonDecode(dataJSON);
     final registeProvider =
         Provider.of<RegisterProvider>(context, listen: false);
     return Scaffold(
@@ -49,6 +52,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              Text(dataMap["id"].toString()),
               TextFormField(
                 controller: emailCo,
                 decoration: InputDecoration(
