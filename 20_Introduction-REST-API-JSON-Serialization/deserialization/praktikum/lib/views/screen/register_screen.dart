@@ -57,6 +57,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   filled: true,
                   fillColor: Colors.indigo.withOpacity(0.5),
                 ),
+                validator: (value) {
+                  //validasi tidak kosong
+                  if (value == null || value.isEmpty) {
+                    return 'Mohon Masukkan Nama Kontak';
+                  }
+                  if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                    return "Please enter a valid email address";
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 8,
@@ -69,6 +79,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   filled: true,
                   fillColor: Colors.indigo.withOpacity(0.5),
                 ),
+                validator: (value) {
+                  //validasi tidak kosong
+                  if (value == null || value.isEmpty) {
+                    return 'Mohon Masukkan Nama Kontak';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 8,
