@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:praktikum/models/state.dart';
-import 'package:praktikum/provider/register_provider.dart';
+import 'package:praktikum/prio1/models/state.dart';
+import 'package:praktikum/prio1/provider/register_provider.dart';
 import 'package:provider/provider.dart';
 import 'dart:convert';
 

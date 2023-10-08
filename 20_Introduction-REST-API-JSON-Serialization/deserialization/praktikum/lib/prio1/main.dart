@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:praktikum/provider/register_provider.dart';
-import 'package:praktikum/views/screen/register_screen.dart';
+import 'package:praktikum/prio1/provider/register_provider.dart';
+import 'package:praktikum/prio1/views/screen/register_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

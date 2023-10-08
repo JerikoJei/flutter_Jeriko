@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:praktikum/models/register_model.dart';
-import 'package:praktikum/utils/utils.dart';
+import 'package:praktikum/prio1/models/register_model.dart';
+import 'package:praktikum/prio1/utils/utils.dart';
 
 class ApiService {
   ApiService() {

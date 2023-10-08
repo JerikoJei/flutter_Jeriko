@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:praktikum/models/register_model.dart';
-import 'package:praktikum/models/state.dart';
-import 'package:praktikum/services/services.dart';
+import 'package:praktikum/prio1/models/register_model.dart';
+import 'package:praktikum/prio1/models/state.dart';
+import 'package:praktikum/prio1/services/services.dart';
 
 class RegisterProvider extends ChangeNotifier {
   final ApiService service = ApiService();
