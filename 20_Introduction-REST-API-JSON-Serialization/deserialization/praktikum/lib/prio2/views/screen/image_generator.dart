@@ -47,24 +47,28 @@ class _ImageGeneratorScreenState extends State<ImageGeneratorScreen> {
       ),
       body: Column(
         children: [
-          Image(
-            image: picprovider.image.isNotEmpty
-                ? Svg(picprovider.image, source: SvgSource.network)
-                : const NetworkImage(
-                        'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png')
-                    as ImageProvider,
-            loadingBuilder: (context, child, progress) => progress == null
-                ? child
-                : const SizedBox(
-                    height: 300,
-                    width: 300,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
-            fit: BoxFit.cover,
-            height: 300,
-            width: 300,
+          Consumer<PicProvider>(
+            builder: (context, picprov, _) {
+              return Image(
+                image: picprov.image.isNotEmpty
+                    ? Svg(picprov.image, source: SvgSource.network)
+                    : const NetworkImage(
+                            'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png')
+                        as ImageProvider,
+                loadingBuilder: (context, child, progress) => progress == null
+                    ? child
+                    : const SizedBox(
+                        height: 300,
+                        width: 300,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                fit: BoxFit.cover,
+                height: 300,
+                width: 300,
+              );
+            },
           ),
           Form(
             key: formkey1,

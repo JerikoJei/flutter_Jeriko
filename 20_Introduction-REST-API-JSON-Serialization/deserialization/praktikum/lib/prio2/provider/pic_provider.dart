@@ -18,10 +18,12 @@ class PicProvider extends ChangeNotifier {
       image = '';
       notifyListeners();
 
-      response = await service.picture(name);
-
-      myState = MyState.loaded;
       image = Utils.baseurl + name;
+      notifyListeners();
+
+      response = await service.picture(name);
+      myState = MyState.loaded;
+
       notifyListeners();
     } catch (e) {
       if (e is DioException) {
