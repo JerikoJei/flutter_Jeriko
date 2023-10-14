@@ -1,0 +1,5 @@
+# Perkenalan AI & Open AI
+
+1. AI adalh mesin yang bisa melakukan tugas dan berpikir layaknya manusia, mesin ini memiliki akal dan terus belajar agar nantinya bisa mengambil tindakan secara mandiri, cara kerjanya AI adalah memprediksi dan membuat keputusan dengan menggunakan data, Untuk mempelajari AI ada strukturnya yaitu AI, Machine Learning, dan deep Learning.
+2. Teknologi penggerak AI ada beberapa yaitu Data dimana data tersedia dalam jumlah besar berkat adanya internet saat ini, algoritma dimana muncul penemuan-penemuan algoritma baru, perangkat keras dimana kemajuan perangkat keras mendukung kemampuan komputasi, Komputasi awan dimana akses untuk menggunakan teknologi sudah lebih mudah, dan investasi dimana banyak perusahaan berlomba untuk berinvestasi pada AI.
+3. Ada banyak hal yang bisa Ai Impelementasikan di dunia nyata contohnya Marketing dimana ada Sales forecasting kedepannya, content personalization, dynamic pricing lalu ada kesehatan dimana bisa digunakan untuk analisis medical, monitoring pasien.
